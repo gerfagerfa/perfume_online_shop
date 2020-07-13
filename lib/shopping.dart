@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:perfume_online_shop/item_description.dart';
-import 'package:perfume_online_shop/perfume.dart';
+import 'package:perfume_online_shop/detail.dart';
+import 'package:perfume_online_shop/data.dart';
+
+import 'constants.dart';
 
 class Shopping extends StatefulWidget {
   @override
@@ -229,7 +231,7 @@ class _ShoppingState extends State<Shopping> {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => ItemDescription(perfume: perfume)),
+          MaterialPageRoute(builder: (context) => Detail(perfume: perfume)),
         );
       },
       child: Column(
@@ -240,17 +242,7 @@ class _ShoppingState extends State<Shopping> {
             width: 200,
             height: 270,
             decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomCenter,
-                stops: [0.1, 0.3, 0.5, 0.9],
-                colors: [
-                  Color(0xFF82AE55),
-                  Color(0xFF65A34E),
-                  Color(0xFF39874B),
-                  Color(0xFF307B40),
-                ],
-              ),
+              gradient: kGradient,
               borderRadius: BorderRadius.all(
                 Radius.circular(15),
               ),
@@ -324,7 +316,7 @@ class _ShoppingState extends State<Shopping> {
             "€ " + perfume.price.toStringAsFixed(2),
             style: TextStyle(
               fontSize: 16,
-              color: Color(0xFF307B40),
+              color: kGreen,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -392,17 +384,7 @@ class _ShoppingState extends State<Shopping> {
                 Container(
                   width: 110,
                   decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomCenter,
-                      stops: [0.1, 0.3, 0.5, 0.9],
-                      colors: [
-                        Color(0xFF82AE55),
-                        Color(0xFF65A34E),
-                        Color(0xFF39874B),
-                        Color(0xFF307B40),
-                      ],
-                    ),
+                    gradient: kGradient,
                     borderRadius: BorderRadius.all(
                       Radius.circular(25),
                     ),
@@ -449,7 +431,7 @@ class _ShoppingState extends State<Shopping> {
                       "€ " + perfume.price.toStringAsFixed(2),
                       style: TextStyle(
                         fontSize: 16,
-                        color: Color(0xFF307B40),
+                        color: kGreen,
                         fontWeight: FontWeight.bold,
                       ),
                     ),

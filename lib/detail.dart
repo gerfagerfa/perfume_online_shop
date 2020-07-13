@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:perfume_online_shop/perfume.dart';
+import 'package:perfume_online_shop/data.dart';
 
-class ItemDescription extends StatefulWidget {
+import 'constants.dart';
+
+class Detail extends StatefulWidget {
 
   final Perfume perfume;
 
-  ItemDescription({@required this.perfume});
+  Detail({@required this.perfume});
 
   @override
-  _ItemDescriptionState createState() => _ItemDescriptionState();
+  _DetailState createState() => _DetailState();
 }
 
-class _ItemDescriptionState extends State<ItemDescription> {
+class _DetailState extends State<Detail> {
 
   final PageController _pageController = PageController(initialPage: 0);
   int _currentImage = 0;
@@ -77,17 +79,7 @@ class _ItemDescriptionState extends State<ItemDescription> {
       ),
       body: Container(
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomCenter,
-            stops: [0.1, 0.3, 0.5, 0.9],
-            colors: [
-              Color(0xFF82AE55),
-              Color(0xFF65A34E),
-              Color(0xFF39874B),
-              Color(0xFF307B40),
-            ],
-          ),
+          gradient: kGradient,
         ),
         child: SafeArea(
           child: Column(
@@ -190,7 +182,7 @@ class _ItemDescriptionState extends State<ItemDescription> {
                                 "€ " + widget.perfume.price.toStringAsFixed(2),
                                 style: TextStyle(
                                   fontSize: 28,
-                                  color: Color(0xFF307B40),
+                                  color: kGreen,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -213,31 +205,31 @@ class _ItemDescriptionState extends State<ItemDescription> {
                                       Icon(
                                         Icons.star,
                                         size: 28,
-                                        color: Color(0xFFFEB67C),
+                                        color: kStarsColor,
                                       ),
 
                                       Icon(
                                         Icons.star,
                                         size: 28,
-                                        color: Color(0xFFFEB67C),
+                                        color: kStarsColor,
                                       ),
 
                                       Icon(
                                         Icons.star,
                                         size: 28,
-                                        color: Color(0xFFFEB67C),
+                                        color: kStarsColor,
                                       ),
 
                                       Icon(
                                         Icons.star,
                                         size: 28,
-                                        color: Color(0xFFFEB67C),
+                                        color: kStarsColor,
                                       ),
 
                                       Icon(
                                         Icons.star_half,
                                         size: 28,
-                                        color: Color(0xFFFEB67C),
+                                        color: kStarsColor,
                                       ),
 
                                     ],
