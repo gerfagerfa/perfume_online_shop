@@ -15,18 +15,17 @@ class Detail extends StatefulWidget {
 
 class _DetailState extends State<Detail> {
 
-  final PageController _pageController = PageController(initialPage: 0);
   int _currentImage = 0;
 
-  List<Widget> _buildPageIndicator(){
+  List<Widget> buildPageIndicator(){
     List<Widget> list = [];
     for (var i = 0; i < widget.perfume.images.length; i++) {
-      list.add(i == _currentImage ? _indicator(true) : _indicator(false));
+      list.add(i == _currentImage ? buildIndicator(true) : buildIndicator(false));
     }
     return list;
   }
 
-  Widget _indicator(bool isActive){
+  Widget buildIndicator(bool isActive){
     return AnimatedContainer(
       duration: Duration(milliseconds: 150),
       margin: EdgeInsets.symmetric(horizontal: 6.0),
@@ -34,7 +33,9 @@ class _DetailState extends State<Detail> {
       width: isActive ? 20.0 : 8.0,
       decoration: BoxDecoration(
         color: isActive ? Colors.white : Colors.grey[400],
-        borderRadius: BorderRadius.all(Radius.circular(12)),
+        borderRadius: BorderRadius.all(
+          Radius.circular(12),
+        ),
       ),
     );
   }
@@ -88,7 +89,6 @@ class _DetailState extends State<Detail> {
               Expanded(
                 child: PageView(
                   physics: BouncingScrollPhysics(),
-                  controller: _pageController,
                   onPageChanged: (int page){
                     setState(() {
                       _currentImage = page;
@@ -113,7 +113,7 @@ class _DetailState extends State<Detail> {
                 height: size.height * 0.1,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: _buildPageIndicator(),
+                  children: buildPageIndicator(),
                 ),
               )
               : Container(

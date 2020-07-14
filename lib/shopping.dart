@@ -19,9 +19,6 @@ class _ShoppingState extends State<Shopping> {
 
   @override
   Widget build(BuildContext context) {
-
-    Size size = MediaQuery.of(context).size;
-    
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -83,7 +80,7 @@ class _ShoppingState extends State<Shopping> {
                 child: ListView(
                   physics: BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
-                  children: buildShowcase(),
+                  children: buildItems(),
                 ),
               ),
 
@@ -157,19 +154,19 @@ class _ShoppingState extends State<Shopping> {
 
   List<Widget> buildFilters(){
     List<Widget> list = [];
-    list.add(filterIcon());
+    list.add(buildFilterIcon());
     for (var filter in filters) {
-      list.add(filterOption(filter));
+      list.add(buildFilterOption(filter));
     }
     return list;
   }
 
-  Widget filterIcon(){
+  Widget buildFilterIcon(){
     return Container(
       width: 60,
       margin: EdgeInsets.only(right: 12),
       decoration: BoxDecoration(
-        color: Color(0xFF59A05E),
+        color: kGreen,
         borderRadius: BorderRadius.all(
           Radius.circular(15),
         ),
@@ -184,7 +181,7 @@ class _ShoppingState extends State<Shopping> {
     );
   }
 
-  Widget filterOption(Filter filter){
+  Widget buildFilterOption(Filter filter){
     return GestureDetector(
       onTap: () {
         setState(() {
@@ -193,13 +190,13 @@ class _ShoppingState extends State<Shopping> {
       },
       child: Container(
         decoration: BoxDecoration(
-          color: filter.selected ? Color(0xFF59A05E) : Colors.white,
+          color: filter.selected ? kGreen : Colors.white,
           borderRadius: BorderRadius.all(
             Radius.circular(15),
           ),
           border: Border.all(
             width: 1,
-            color: filter.selected ? Color(0xFF59A05E) : Colors.grey[300],
+            color: filter.selected ? kGreen : Colors.grey[300],
           )
         ),
         padding: EdgeInsets.symmetric(horizontal: 32,),
@@ -210,7 +207,7 @@ class _ShoppingState extends State<Shopping> {
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
-              color: filter.selected ? Colors.white : Color(0xFF59A05E),
+              color: filter.selected ? Colors.white : kGreen,
             ),
           ),
         ),
@@ -218,15 +215,15 @@ class _ShoppingState extends State<Shopping> {
     );
   }
 
-  List<Widget> buildShowcase(){
+  List<Widget> buildItems(){
     List<Widget> list = [];
     for (var perfume in perfumes) {
-      list.add(showItem(perfume));
+      list.add(buildItem(perfume));
     }
     return list;
   }
 
-  Widget showItem(Perfume perfume){
+  Widget buildItem(Perfume perfume){
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -292,6 +289,7 @@ class _ShoppingState extends State<Shopping> {
                     ),
                   ),
                 ),
+                
               ],
             ),
           ),
