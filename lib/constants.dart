@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 LinearGradient kGradient = LinearGradient(
   begin: Alignment.topLeft,
   end: Alignment.bottomCenter,
-  stops: [0.1, 0.3, 0.5, 0.9],
-  colors: [
+  List: [
     Color(0xFF82AE55),
     Color(0xFF65A34E),
     Color(0xFF39874B),
